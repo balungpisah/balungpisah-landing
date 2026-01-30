@@ -1,0 +1,8 @@
+services:
+  app:
+    container_name: ${CONTAINER_NAME:-balungpisah-landing}
+    image: ${IMAGE_REGISTRY:-ghcr.io/balungpisah/balungpisah-landing}:${IMAGE_TAG:-latest}
+    env_file:
+      - .env
+    restart: unless-stopped
+    network_mode: host
