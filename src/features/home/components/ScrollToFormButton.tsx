@@ -18,7 +18,7 @@ export function ScrollToFormButton({ targetId }: ScrollToFormButtonProps) {
     <Button
       onClick={handleClick}
       size="lg"
-      className="bg-primary text-primary-foreground hover:bg-primary/90 mt-8 rounded-full px-8 py-6 text-lg font-bold transition-all duration-300 hover:scale-105"
+      className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-bold transition-all duration-300 hover:scale-105"
     >
       IKUT TANDANG GAWE!
     </Button>

@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
-import { Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { Sparkles, ScrollText } from 'lucide-react';
 import { Navbar } from '@/features/home/components/Navbar';
 import { ExpectationForm } from '@/features/home/components/ExpectationForm';
 import { ContributorCTA } from '@/features/home/components/ContributorCTA';
 import { ScrollToFormButton } from '@/features/home/components/ScrollToFormButton';
+import { WhatsAppChannelCTA } from '@/features/home/components/WhatsAppChannelCTA';
 
 // ============================================================================
 // SEO METADATA
@@ -85,8 +87,17 @@ export default function Home() {
               <span className="text-foreground">Pejabat menuntaskan.</span>
             </p>
 
-            {/* CTA Button */}
-            <ScrollToFormButton targetId="urun-rembug" />
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <ScrollToFormButton targetId="urun-rembug" />
+              <Link
+                href="/manifesto"
+                className="border-primary/50 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-full border px-8 py-3.5 text-lg font-semibold transition-all duration-300 hover:scale-105"
+              >
+                <ScrollText size={20} />
+                Baca Manifesto
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -97,6 +108,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ================================================================== */}
+      {/* CONTRIBUTOR CTA SECTION */}
+      {/* ================================================================== */}
+      <ContributorCTA />
+
+      {/* ================================================================== */}
+      {/* WHATSAPP CHANNEL CTA SECTION */}
+      {/* ================================================================== */}
+      <WhatsAppChannelCTA />
 
       {/* ================================================================== */}
       {/* EXPECTATION FORM SECTION */}
@@ -119,11 +140,6 @@ export default function Home() {
           <ExpectationForm />
         </div>
       </section>
-
-      {/* ================================================================== */}
-      {/* CONTRIBUTOR CTA SECTION */}
-      {/* ================================================================== */}
-      <ContributorCTA />
 
       {/* ================================================================== */}
       {/* FOOTER */}
