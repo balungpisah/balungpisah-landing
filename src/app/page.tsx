@@ -1,10 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Sparkles, ScrollText } from 'lucide-react';
+import { Sparkles, ScrollText, Database } from 'lucide-react';
 import { Navbar } from '@/features/home/components/Navbar';
 import { ExpectationForm } from '@/features/home/components/ExpectationForm';
 import { ContributorCTA } from '@/features/home/components/ContributorCTA';
-import { ScrollToFormButton } from '@/features/home/components/ScrollToFormButton';
 import { WhatsAppChannelCTA } from '@/features/home/components/WhatsAppChannelCTA';
 
 // ============================================================================
@@ -89,7 +88,15 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <ScrollToFormButton targetId="urun-rembug" />
+              <Link
+                href="https://urun.balungpisah.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-lg font-bold transition-all duration-300 hover:scale-105"
+              >
+                <Database size={20} />
+                Ikut Urun Data
+              </Link>
               <Link
                 href="/manifesto"
                 className="border-primary/50 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-full border px-8 py-3.5 text-lg font-semibold transition-all duration-300 hover:scale-105"
