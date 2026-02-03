@@ -27,6 +27,14 @@ export function Navbar() {
           >
             Manifesto
           </Link>
+          <Link
+            href="https://urun.balungpisah.id/sign-in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+          >
+            Masuk
+          </Link>
           <ThemeToggle />
         </div>
       </div>
