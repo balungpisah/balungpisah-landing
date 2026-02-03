@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle2, Home } from 'lucide-react';
+import { CheckCircle2, Home, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ShareButton } from '@/features/contribution/components/ShareButton';
+
+const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029VbC5I453bbUxYbQdPS2i';
 
 // ============================================================================
 // SEO METADATA
@@ -107,6 +109,18 @@ export default async function ContributionSuccessPage({ searchParams }: PageProp
 
           {/* Action Buttons */}
           <div className="space-y-3">
+            <a
+              href={WHATSAPP_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Button className="w-full bg-[#25D366] py-5 text-base font-semibold text-white hover:bg-[#1da851]">
+                <MessageCircle size={20} className="mr-2" />
+                Gabung Channel WhatsApp
+              </Button>
+            </a>
+
             <ShareButton isOrganization={isOrganization} />
 
             <Link href="/" className="block">

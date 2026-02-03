@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
-import { Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { ScrollText, Database, CheckCircle, FileText, Eye } from 'lucide-react';
 import { Navbar } from '@/features/home/components/Navbar';
-import { ExpectationForm } from '@/features/home/components/ExpectationForm';
 import { ContributorCTA } from '@/features/home/components/ContributorCTA';
-import { ScrollToFormButton } from '@/features/home/components/ScrollToFormButton';
+import { WhatsAppChannelCTA } from '@/features/home/components/WhatsAppChannelCTA';
 
 // ============================================================================
 // SEO METADATA
@@ -12,7 +12,7 @@ import { ScrollToFormButton } from '@/features/home/components/ScrollToFormButto
 export const metadata: Metadata = {
   title: 'BalungPisah - Gotong Royong Menyambung yang Terpisah',
   description:
-    'Platform kolaborasi rakyat dan pemerintah. Rakyat urun data, AI menjernihkan, Pejabat menuntaskan. Segera hadir untuk Indonesia.',
+    'Platform kolaborasi rakyat dan pemerintah. Rakyat urun data, AI menjernihkan, Pejabat menuntaskan. Kini hadir untuk Indonesia.',
   keywords: [
     'BalungPisah',
     'kolaborasi',
@@ -56,7 +56,7 @@ export default function Home() {
       <Navbar />
 
       {/* ================================================================== */}
-      {/* COMING SOON HERO SECTION - FULL SCREEN */}
+      {/* HERO SECTION - FULL SCREEN */}
       {/* ================================================================== */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Background Gradient Orbs */}
@@ -65,12 +65,6 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* COMING SOON - Badge at top */}
-            <div className="bg-primary/10 border-primary/30 mb-8 inline-flex items-center gap-2 rounded-full border px-5 py-2.5">
-              <span className="bg-primary h-2 w-2 animate-pulse rounded-full" />
-              <span className="text-primary text-sm font-medium">Segera Hadir</span>
-            </div>
-
             {/* Brand Name - Using h1 for SEO */}
             <h1 className="text-foreground mb-4 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
               Balung<span className="text-primary">Pisah</span>
@@ -85,8 +79,25 @@ export default function Home() {
               <span className="text-foreground">Pejabat menuntaskan.</span>
             </p>
 
-            {/* CTA Button */}
-            <ScrollToFormButton targetId="urun-rembug" />
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="https://urun.balungpisah.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-lg font-bold transition-all duration-300 hover:scale-105"
+              >
+                <Database size={20} />
+                Ikut Urun Data
+              </Link>
+              <Link
+                href="/manifesto"
+                className="border-primary/50 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-full border px-8 py-3.5 text-lg font-semibold transition-all duration-300 hover:scale-105"
+              >
+                <ScrollText size={20} />
+                Baca Manifesto
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -99,26 +110,76 @@ export default function Home() {
       </section>
 
       {/* ================================================================== */}
-      {/* EXPECTATION FORM SECTION */}
+      {/* URUN PLATFORM SECTION */}
       {/* ================================================================== */}
-      <section id="expectation-form" className="bg-card flex-1 py-24">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          {/* Section Header - Static content rendered on server */}
-          <div className="mb-12 text-center">
-            <div className="bg-primary/20 text-primary mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm">
-              <Sparkles size={14} />
-              Bantu Kami Berkembang
-            </div>
-            <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">Apa Harapanmu?</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Ceritakan harapan dan ekspektasimu terhadap platform ini.
+      <section className="bg-card py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-16 text-center">
+            <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl">
+              Kenalan dengan <span className="text-primary">Urun</span>
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+              Platform untuk menyampaikan aspirasi dan melaporkan permasalahan di sekitarmu. Suaramu
+              penting untuk perubahan.
             </p>
           </div>
 
-          {/* Interactive Form - Client Component */}
-          <ExpectationForm />
+          {/* Features Grid */}
+          <div className="mb-12 grid gap-8 md:grid-cols-3">
+            {/* Feature 1 */}
+            <div className="bg-background rounded-2xl border p-6 text-center">
+              <div className="bg-primary/10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+                <FileText className="text-primary" size={24} />
+              </div>
+              <h3 className="text-foreground mb-2 text-lg font-semibold">Laporkan Masalah</h3>
+              <p className="text-muted-foreground text-sm">
+                Sampaikan permasalahan di lingkunganmu dengan mudah dan terstruktur.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-background rounded-2xl border p-6 text-center">
+              <div className="bg-primary/10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+                <Eye className="text-primary" size={24} />
+              </div>
+              <h3 className="text-foreground mb-2 text-lg font-semibold">Pantau Progress</h3>
+              <p className="text-muted-foreground text-sm">
+                Lihat perkembangan laporanmu dan ketahui tindak lanjut yang dilakukan.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-background rounded-2xl border p-6 text-center">
+              <div className="bg-primary/10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+                <CheckCircle className="text-primary" size={24} />
+              </div>
+              <h3 className="text-foreground mb-2 text-lg font-semibold">Lihat Penyelesaian</h3>
+              <p className="text-muted-foreground text-sm">
+                Dapatkan notifikasi saat laporanmu ditindaklanjuti dan diselesaikan.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="flex justify-center">
+            <Link
+              href="https://urun.balungpisah.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-lg font-bold transition-all duration-300 hover:scale-105"
+            >
+              <Database size={20} />
+              Mulai Sekarang
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* ================================================================== */}
+      {/* WHATSAPP CHANNEL CTA SECTION */}
+      {/* ================================================================== */}
+      <WhatsAppChannelCTA />
 
       {/* ================================================================== */}
       {/* CONTRIBUTOR CTA SECTION */}

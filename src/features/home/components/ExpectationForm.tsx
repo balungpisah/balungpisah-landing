@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, MessageCircle } from 'lucide-react';
 import { useMutation } from '@/hooks/api/use-mutation';
 import { toast } from 'sonner';
 
@@ -78,6 +78,23 @@ export function ExpectationForm() {
           </div>
           <h3 className="text-foreground mb-2 text-xl font-semibold">Terima Kasih!</h3>
           <p className="text-muted-foreground mb-6">Harapanmu sudah kami terima.</p>
+
+          {/* WhatsApp Channel CTA */}
+          <div className="bg-muted/50 mb-6 rounded-xl p-5">
+            <p className="text-foreground mb-3 text-sm font-medium">
+              Ikuti perkembangan terbaru di Channel WhatsApp kami
+            </p>
+            <a
+              href="https://whatsapp.com/channel/0029VbC5I453bbUxYbQdPS2i"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1da851]"
+            >
+              <MessageCircle size={18} />
+              Gabung Channel
+            </a>
+          </div>
+
           <button
             onClick={() => setIsSubmitted(false)}
             className="border-primary text-primary hover:bg-primary/10 rounded-lg border bg-transparent px-6 py-2 font-medium transition-colors"
