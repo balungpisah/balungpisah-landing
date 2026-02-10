@@ -26,7 +26,8 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs && \
     mkdir -p /app/.next/cache && \
-    chown -R nextjs:nodejs /app/.next/cache
+    chown -R nextjs:nodejs /app/.next/cache && \
+    rm -rf /usr/local/lib/node_modules/npm
 
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
