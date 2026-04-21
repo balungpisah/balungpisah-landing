@@ -63,6 +63,30 @@ export function ContributorForm() {
     }
   };
 
+  const validateField = <K extends keyof ContributorFormData>(key: K, value: ContributorFormData[K]) => {
+    if (!form.submission_type) return;
+
+    // Validate individual field on blur
+    const schema = form.submission_type === 'personal' ? personalSchema : organizationSchema;
+
+    // Create a partial schema with only the field we're validating
+    const fieldSchema = schema.pick({ [key]: true } as any);
+    const result = fieldSchema.safeParse({ [key]: value });
+
+    if (!result.success) {
+      const errorMessage = result.error.issues[0]?.message;
+      if (errorMessage) {
+        setErrors((prev) => ({ ...prev, [key]: errorMessage }));
+      }
+    } else {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  };
+
   const handleSubmit = () => {
     setErrors({});
 
@@ -190,6 +214,7 @@ export function ContributorForm() {
                   placeholder="email@contoh.com"
                   value={form.email}
                   onChange={(e) => updateField('email', e.target.value)}
+                  onBlur={() => validateField('email', form.email)}
                   className={errors.email ? 'border-destructive' : ''}
                 />
               </FormField>
@@ -205,6 +230,7 @@ export function ContributorForm() {
                   placeholder="08123456789"
                   value={form.whatsapp}
                   onChange={(e) => updateField('whatsapp', e.target.value)}
+                  onBlur={() => validateField('whatsapp', form.whatsapp)}
                   className={errors.whatsapp ? 'border-destructive' : ''}
                 />
               </FormField>
@@ -433,6 +459,7 @@ export function ContributorForm() {
                   placeholder="08123456789"
                   value={form.contact_whatsapp}
                   onChange={(e) => updateField('contact_whatsapp', e.target.value)}
+                  onBlur={() => validateField('contact_whatsapp', form.contact_whatsapp)}
                   className={errors.contact_whatsapp ? 'border-destructive' : ''}
                 />
               </FormField>
@@ -443,6 +470,7 @@ export function ContributorForm() {
                   placeholder="email@organisasi.com"
                   value={form.contact_email}
                   onChange={(e) => updateField('contact_email', e.target.value)}
+                  onBlur={() => validateField('contact_email', form.contact_email)}
                   className={errors.contact_email ? 'border-destructive' : ''}
                 />
               </FormField>

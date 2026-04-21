@@ -2,11 +2,17 @@ import { z } from 'zod';
 
 export const personalSchema = z.object({
   name: z.string().min(2, 'Nama minimal 2 karakter'),
-  email: z.string().min(1, 'Email wajib diisi').email('Format email tidak valid'),
+  email: z
+    .string()
+    .min(1, 'Email wajib diisi')
+    .email('Format email tidak valid. Contoh: nama@email.com'),
   whatsapp: z
     .string()
     .min(1, 'No. WhatsApp wajib diisi')
-    .regex(/^(\+62|62|0)[0-9]{9,13}$/, 'Format nomor tidak valid'),
+    .regex(
+      /^(\+62|62|0)[0-9]{9,13}$/,
+      'Format tidak valid. Gunakan: 08xxxxxxxxxx atau +628xxxxxxxxxx (10-13 digit)'
+    ),
   city: z.string().min(2, 'Domisili wajib diisi'),
   role: z
     .enum(['perakit', 'penyuara', 'perumus', 'saksi_fakta', 'lainnya'])
@@ -29,8 +35,14 @@ export const organizationSchema = z.object({
   contact_whatsapp: z
     .string()
     .min(1, 'No. WhatsApp wajib diisi')
-    .regex(/^(\+62|62|0)[0-9]{9,13}$/, 'Format nomor tidak valid'),
-  contact_email: z.string().min(1, 'Email wajib diisi').email('Format email tidak valid'),
+    .regex(
+      /^(\+62|62|0)[0-9]{9,13}$/,
+      'Format tidak valid. Gunakan: 08xxxxxxxxxx atau +628xxxxxxxxxx (10-13 digit)'
+    ),
+  contact_email: z
+    .string()
+    .min(1, 'Email wajib diisi')
+    .email('Format email tidak valid. Contoh: nama@email.com'),
   contribution_offer: z.string().min(1, 'Wajib diisi').max(1000, 'Maksimal 1000 karakter'),
   agreed: z.literal(true, { message: 'Kamu harus menyetujui untuk melanjutkan' }),
 });
